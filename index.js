@@ -7,7 +7,9 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 module.exports = { client };
 
 const eventsPath = path.join(__dirname, "events");
-eventFiles = fs.readdirSync(eventsPath).filter((file) => file.endsWith(".js"));
+const eventFiles = fs
+	.readdirSync(eventsPath)
+	.filter((file) => file.endsWith(".js"));
 
 eventFiles.forEach((eventFile) => {
 	const filePath = path.join(eventsPath, eventFile);
