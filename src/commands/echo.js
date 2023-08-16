@@ -1,6 +1,13 @@
-const { SlashCommandBuilder } = require("discord.js");
+const {
+	SlashCommandBuilder,
+	ChatInputCommandInteraction,
+} = require("discord.js");
 
 module.exports = {
+	/**
+	 *
+	 * @param {ChatInputCommandInteraction} interaction
+	 */
 	data: new SlashCommandBuilder()
 		.setName("echo")
 		.setDescription("repeats what you say")

@@ -1,24 +1,26 @@
 const { Collection } = require("discord.js");
 const fs = require("fs");
+const path = require("path");
+const dirPath = path.resolve(__dirname, "./commands");
 
-const getFiles = (dir) => {
-	const files = fs.readdirSync(dir, {
+const getFiles = () => {
+	const files = fs.readdirSync(dirPath, {
 		withFileTypes: true,
 	});
 	let commandFiles = [];
 	files.forEach((file) => {
 		if (file.isDirectory()) {
-			commandFiles = [...commandFiles, ...getFiles(`${dir}/${file.name}`)];
+			commandFiles = [...commandFiles, ...getFiles(`${dirPath}/${file.name}`)];
 		} else if (file.name.endsWith(".js")) {
-			commandFiles.push(`${dir}/${file.name}`);
+			commandFiles.push(`${dirPath}/${file.name}`);
 		}
 	});
 	return commandFiles;
 };
 
-const getCommands = (dir) => {
+const getCommands = () => {
 	let commands = new Collection();
-	const commandFiles = getFiles(dir);
+	const commandFiles = getFiles();
 
 	commandFiles.forEach((commandFile) => {
 		const command = require(commandFile);

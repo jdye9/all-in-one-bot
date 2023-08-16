@@ -1,23 +1,7 @@
 require("dotenv").config();
-const fs = require("fs");
-const path = require("path");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord.js");
-
-const getFiles = (dir) => {
-	const files = fs.readdirSync(dir, {
-		withFileTypes: true,
-	});
-	let commandFiles = [];
-	files.forEach((file) => {
-		if (file.isDirectory()) {
-			commandFiles = [...commandFiles, ...getFiles(`${dir}/${file.name}`)];
-		} else if (file.name.endsWith(".js")) {
-			commandFiles.push(`${dir}/${file.name}`);
-		}
-	});
-	return commandFiles;
-};
+const { getFiles } = require("./utils");
 
 let commands = [];
 const commandFiles = getFiles("./commands");

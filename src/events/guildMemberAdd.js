@@ -1,9 +1,14 @@
 const { client } = require("../index.js");
 const { getCommands } = require("../utils.js");
+const { GuildMember, GuildChannel } = require("discord.js");
 
-client.commands = getCommands("./commands");
+client.commands = getCommands();
 
 module.exports = {
+	/**
+	 *
+	 * @param {GuildMember} member
+	 */
 	name: "guildMemberAdd",
 	async execute(member) {
 		const welcomeRole = await member.guild.roles.fetch("1140764480893112362");

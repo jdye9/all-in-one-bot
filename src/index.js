@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Client, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
+const mongoose = require("mongoose");
 
 const client = new Client({
 	intents: [
@@ -28,4 +29,7 @@ eventFiles.forEach((eventFile) => {
 	}
 });
 
-client.login(process.env.DISCORD_TOKEN);
+mongoose.connect(process.env.DATABASE_URL).then(() => {
+	console.log("Connected to MongoDB");
+	client.login(process.env.DISCORD_TOKEN);
+});

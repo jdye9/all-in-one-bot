@@ -1,7 +1,7 @@
 const { client } = require("../index.js");
 const { getCommands } = require("../utils.js");
 
-client.commands = getCommands("./commands");
+client.commands = getCommands();
 
 module.exports = {
 	name: "ready",
