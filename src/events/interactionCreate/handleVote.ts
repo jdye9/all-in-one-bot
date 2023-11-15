@@ -28,8 +28,7 @@ export const handleVote = async (interaction: ButtonInteraction) => {
 			} else if (targetPoll.upvotes.length < targetPoll.downvotes.length) {
 				targetPoll.status = "fail";
 				embedColor = "Red";
-			} else targetPoll.status = "tie";
-			{
+			} else {
 				embedColor = "Yellow";
 			}
 

@@ -25,3 +25,21 @@ export const formatResults = (upvotes: string[], downvotes: string[]) => {
 	results.push(progressBar);
 	return results.join("\n\n");
 };
+
+export const formatResultsParty = (joined: string[], partySize: number) => {
+	const yesSquares = joined.length;
+	const openSquares = Math.round(partySize - joined.length);
+
+	const progressBar = "🟩".repeat(yesSquares) + "⬜️".repeat(openSquares);
+
+	const results = [];
+	results.push(
+		joined.length === partySize
+			? `${joined.length} • Party Full`
+			: `${joined.length} Joined • ${partySize - joined.length} Opening${
+					partySize - joined.length === 1 ? "" : "s"
+			  }`
+	);
+	results.push(progressBar);
+	return results.join("\n\n");
+};

@@ -24,7 +24,8 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 		})
 		.addFields({
 			name: "Commands",
-			value: "**/help** - Opens AIOBot help menu",
+			value:
+				"**/help** - Opens AIOBot help menu\n**/config-welcome** - Set welcome channel and role settings\n**/config-poll** - Set channel for parties and polls\n**/poll** - Create a poll\n**/party** - Create a party",
 			inline: false,
 		})
 		.setFooter({
